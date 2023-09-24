@@ -1,9 +1,9 @@
 class IdeasController < ApplicationController
     def index
-        @ideas = Idea.all
-        @debit_total = Idea.sum(:debit)
-        @credit_total = Idea.sum(:credit)
-        @balance = @credit_total - @debit_total
+      @ideas =Idea.all
+      @debit_expense = Idea.where('amount > 0').sum(:amount)
+      @credit_expense= Idea.where('amount < 0').sum(:amount)
+      @total=@debit_expense+@credit_expense
     end
     def create
         @idea = Idea.create(idea_params)

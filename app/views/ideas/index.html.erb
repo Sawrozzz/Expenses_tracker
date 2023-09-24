@@ -14,10 +14,6 @@
             <p><%= idea.title %></p>
             <p><%= idea.amount %></p>
             <p><%= idea.date %></p>
-            <h2>Summaary</h2>
-            <P>Balance: <%= number_to_currency(@balance)%></P>
-            <P>Total Debit: <%= number_to_currency(@debit_total)%></P>
-            <P>Total Credit: <%= number_to_currency(@credit_total)%></P>
           </blockquote>
           <br> 
            <%= link_to 'Delete', idea_path(idea), class: 'btn btn-sm btn-danger', data: {"turbo-confirm": "Are you sure?","turbo-method" => :delete} %>
@@ -25,5 +21,15 @@
         </div>
       </div>
       <% end %>
+
+      <div class="container mx-12px p-1 ">
+        <div class="card" style="width: 500px;">
+          <h2>Summary</h2>
+           <ul class="list-group list-group-flush">
+          <li class="list-group-item">Balance: <%=@debit_expense %>   </li>
+          <li class="list-group-item">Debt: <%=@credit_expense %> </li>
+          <li class="list-group-item">Total: <%=@total %></li>
+           </ul>
+        </div>
       
 </div>

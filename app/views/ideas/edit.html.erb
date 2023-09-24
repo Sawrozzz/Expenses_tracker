@@ -1,0 +1,8 @@
+<h1>Edit the Context</h1>
+
+<%= simple_form_for @idea, method: :patch do |f| %>
+<%= f.input :title %>
+  <%= f.input :amount %>
+  <%= f.input :date %>
+  <%= f.submit 'Update', class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,29 @@
+
+<div class="container">
+<h1>My expenses</h1>
+    <%= simple_form_for Idea.new do |f| %>
+      <%= f.input :title %>
+      <%= f.input :amount %>
+      <%= f.input :date %>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+    <% @ideas.each do |idea| %>
+    <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p><%= idea.title %></p>
+            <p><%= idea.amount %></p>
+            <p><%= idea.date %></p>
+            <h2>Summaary</h2>
+            <P>Balance: <%= number_to_currency(@balance)%></P>
+            <P>Total Debit: <%= number_to_currency(@debit_total)%></P>
+            <P>Total Credit: <%= number_to_currency(@credit_total)%></P>
+          </blockquote>
+          <br> 
+           <%= link_to 'Delete', idea_path(idea), class: 'btn btn-sm btn-danger', data: {"turbo-confirm": "Are you sure?","turbo-method" => :delete} %>
+            <%= link_to 'Edit', edit_idea_path(idea), class: 'btn btn-sm btn-success' %>
+        </div>
+      </div>
+      <% end %>
+      
+</div>
